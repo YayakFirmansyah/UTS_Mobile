@@ -17,17 +17,17 @@ final List<String> imgList = [
 
 final List<Widget> imageSliders = imgList
     .map((item) => Container(
-          child: Container(
-            margin: EdgeInsets.all(5.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              child: Image.network(item, fit: BoxFit.cover, width: 1000.0),
-            ),
+          margin: const EdgeInsets.all(5.0),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+            child: Image.network(item, fit: BoxFit.cover, width: 1000.0),
           ),
         ))
     .toList();
 
 class CarouselWithIndicatorDemo extends StatefulWidget {
+  const CarouselWithIndicatorDemo({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _CarouselWithIndicatorState();
@@ -58,7 +58,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
         ),
       ),
       Container(
-        margin: EdgeInsets.only(left: 10),
+        margin: const EdgeInsets.only(left: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: imgList.asMap().entries.map((entry) {
@@ -67,7 +67,8 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: (Theme.of(context).brightness == Brightness.dark
@@ -103,8 +104,6 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
-      backgroundColor: Colors.grey,
       body: ListView(
         children: [
           Row(
@@ -180,7 +179,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
+                  const Row(
                     children: [
                       BoxWhite(
                         title: "Your Balance",
@@ -202,7 +201,7 @@ class MyHomePage extends StatelessWidget {
               color: Colors.white,
             ),
             margin: const EdgeInsets.all(10),
-            child: Row(
+            child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   WidgetList(
@@ -228,7 +227,7 @@ class MyHomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
             ),
             margin: const EdgeInsets.all(10),
-            child: Row(
+            child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   WidgetList(
@@ -254,7 +253,7 @@ class MyHomePage extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
             ),
             margin: const EdgeInsets.all(10),
-            child: Row(
+            child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   WidgetList(
@@ -280,86 +279,93 @@ class MyHomePage extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5.0),
             ),
-            child: CarouselWithIndicatorDemo(),
+            child: const CarouselWithIndicatorDemo(),
           )
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.qr_code_2_outlined),
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: const Icon(Icons.qr_code_2_outlined),
       ),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 5.0,
-        shape: CircularNotchedRectangle(),
+      bottomNavigationBar: const BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: [
+            NavIcon(
+              iconData: Icons.home_outlined,
+              name: "Home",
+            ),
+            NavIcon(
+              iconData: Icons.history,
+              name: "History",
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: EdgeInsets.all(10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.grey,
-                  ),
-                  Text(
-                    "Home",
-                    style: TextStyle(color: Colors.grey),
+                  Padding(
+                    padding: EdgeInsets.only(top: 25),
+                    child: Text(
+                      "Pay",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.history,
-                    color: Colors.grey,
-                  ),
-                  Text(
-                    "History",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
-              ),
+            NavIcon(
+              iconData: Icons.inbox_outlined,
+              name: "Inbox",
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.inbox,
-                    color: Colors.grey,
-                  ),
-                  Text(
-                    "Inbox",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
-              ),
+            NavIcon(
+              iconData: Icons.account_circle_outlined,
+              name: "Account",
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.home,
-                    color: Colors.grey,
-                  ),
-                  Text(
-                    "Account",
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NavIcon extends StatelessWidget {
+  final IconData iconData;
+  final String name;
+
+  const NavIcon({
+    super.key,
+    required this.iconData,
+    required this.name,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(30),
+        onTap: () {},
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              iconData,
+              color: Colors.grey,
+            ),
+            Text(
+              name,
+              style: const TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -380,22 +386,20 @@ class WidgetList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 90,
       width: 75,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            child: IconButton(
-              icon: Icon(
-                iconData,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                // Tindakan saat tombol notifikasi ditekan
-              },
+          IconButton(
+            icon: Icon(
+              iconData,
+              color: Colors.black,
             ),
+            onPressed: () {
+              // Tindakan saat tombol notifikasi ditekan
+            },
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
@@ -442,10 +446,10 @@ class BoxWhite extends StatelessWidget {
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 10, left: 10),
+                margin: const EdgeInsets.only(top: 10, left: 10),
                 child: Text(
                   balance,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -456,7 +460,7 @@ class BoxWhite extends StatelessWidget {
                   width: 30,
                   height: 30,
                   alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 10, left: 10),
+                  margin: const EdgeInsets.only(top: 10, left: 10),
                   decoration: BoxDecoration(
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(30),
