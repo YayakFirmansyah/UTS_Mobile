@@ -89,99 +89,155 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 10),
-                child: Image.asset(
-                  'assets/images/linkaja.png',
-                  height: 40,
-                ),
-              ),
-              Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.tag,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.heart_broken,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        // Tindakan saat tombol notifikasi ditekan
-                      },
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
           Container(
-            height: 170,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFFE52D27),
-                  Color(0xFFB31217),
-                ],
+              image: DecorationImage(
+                image: AssetImage(
+                  'assets/images/city.png',
+                ),
+                fit: BoxFit.cover,
               ),
             ),
-            margin: const EdgeInsets.all(10),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(10),
-                    child: const Text(
-                      'Hi, SOFYAN NOOR ARIEF,S.ST, M.KOM',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 4,
+                            spreadRadius: 0,
+                          ),
+                        ],
+                      ),
+                      margin: const EdgeInsets.only(left: 10),
+                      child: Image.asset(
+                        'assets/images/linkaja.png',
+                        height: 40,
                       ),
                     ),
-                  ),
-                  const Row(
-                    children: [
-                      BoxWhite(
-                        title: "Your Balance",
-                        balance: "Rp. 10.184",
-                      ),
-                      BoxWhite(
-                        title: "Bonus Balance",
-                        balance: "Rp. 0",
+                    Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0, 2),
+                                blurRadius: 4,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.tag,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {},
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0, 2),
+                                blurRadius: 4,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.heart_broken,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              // Tindakan saat tombol notifikasi ditekan
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 170,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xFFE52D27),
+                        Color(0xFFB31217),
+                      ],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0, 2),
+                        blurRadius: 4,
+                        spreadRadius: 0,
                       ),
                     ],
                   ),
-                ],
-              ),
+                  margin: const EdgeInsets.all(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(10),
+                          child: const Text(
+                            'Hi, SOFYAN NOOR ARIEF,S.ST, M.KOM',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const Row(
+                          children: [
+                            BoxWhite(
+                              title: "Your Balance",
+                              balance: "Rp. 10.184",
+                            ),
+                            BoxWhite(
+                              title: "Bonus Balance",
+                              balance: "Rp. 0",
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(10.0),
               color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0, 2),
+                  blurRadius: 4,
+                  spreadRadius: 0,
+                ),
+              ],
             ),
             margin: const EdgeInsets.all(10),
             child: const Row(
@@ -331,9 +387,16 @@ class WidgetList extends StatelessWidget {
             icon: Icon(
               iconData,
               color: Colors.black,
+              shadows: [
+                Shadow(
+                  color: Colors.grey,
+                  offset: Offset(0, 2),
+                  blurRadius: 4,
+                ),
+              ],
             ),
             onPressed: () {
-              // Tindakan saat tombol notifikasi ditekan
+              // Tindakan saat tombol ditekan
             },
           ),
           Padding(
@@ -366,8 +429,16 @@ class BoxWhite extends StatelessWidget {
       height: 90,
       width: 150,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(10.0),
         color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.redAccent,
+            offset: Offset(0, 2),
+            blurRadius: 4,
+            spreadRadius: 0,
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
